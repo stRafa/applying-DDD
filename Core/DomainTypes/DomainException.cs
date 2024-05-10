@@ -12,7 +12,7 @@ public class EntityValidationException : Exception
         {
             throw new ArgumentException("Errors cannot be an empty list.", nameof(errors));
         }
-        var classType = new StackTrace().GetFrame(1)?.GetMethod().DeclaringType;
+        var classType = new StackTrace().GetFrame(1)?.GetType();
 
         string message = $"Validation failed instantiating a {classType.Name}";
         

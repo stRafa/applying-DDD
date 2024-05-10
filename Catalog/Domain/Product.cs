@@ -24,6 +24,8 @@ public class Product : Entity, IAggregateRoot
         Value = value;
         CreateDate = createDate;
         Image = image;
+
+        Validate();
     }
 
     public void Activate() => Status = true;
