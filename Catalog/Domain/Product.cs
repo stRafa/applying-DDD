@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using NerdStore.Catalog.Domain.Validators.ProductValidators;
 using NerdStore.Core.DomainTypes;
 
 namespace NerdStore.Catalog.Domain;
@@ -40,6 +40,7 @@ public class Product : Entity, IAggregateRoot
 
     public void ChangeDescription(string description)
     {
+        ValidatorUtils.ValidateProperty(new ProductDescriptionValidator(), description);
         Description = description;
     }
 
@@ -56,59 +57,8 @@ public class Product : Entity, IAggregateRoot
 
     public bool HasStock(int quantity) => StockQuantity >= quantity;
 
-    protected override void Validate() 
-    {
-        var validationResult = new Validator().Validate(this);
-
-        if (!validationResult.IsValid)
-            throw new EntityValidationException(validationResult.Errors);
-    } 
-    
-
-    private class Validator : AbstractValidator<Product>
-    {
-        public Validator()
-        {
-            RuleFor(p => p.Name)
-                .NotEmpty().WithMessage("Name is required.")
-                .Length(2, 100).WithMessage("Name must have between 2 and 100 characters.");
-
-            RuleFor(p => p.Description)
-                .MaximumLength(500).WithMessage("Description cannot exceed 500 characters.");
-
-            RuleFor(p => p.Value)
-                .GreaterThan(0).WithMessage("Value must be greater than 0.");
-
-            RuleFor(p => p.CreateDate)
-                .LessThanOrEqualTo(DateTime.UtcNow).WithMessage("Creation date cannot be in the future.");
-
-            RuleFor(p => p.Image)
-                .NotEmpty().WithMessage("Image is required.");
-
-            RuleFor(p => p.StockQuantity)
-                .GreaterThanOrEqualTo(0).WithMessage("Stock quantity cannot be negative.");
-        }
-    }
-}
-
-public class Category : Entity
-{
-    public string Name { get; private set; }
-    public int Code { get; private set; }
-
-    public Category(string name, int code)
-    {
-        Name = name;
-        Code = code;
-    }
-
-    public override string ToString()
-    {
-        return $"{Name} - {Code}";
-    }
-
     protected override void Validate()
     {
-        throw new NotImplementedException();
+        ValidatorUtils.ValidateEntity(new ProductValidator(), this);
     }
 }
