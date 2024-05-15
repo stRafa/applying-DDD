@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Catalog\Domain\Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{06E53539-7790-4387-8FF2-6D2CA74BE495}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{1005BB73-8219-41CE-B693-F63527B4AEEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat", "Chat\API\Chat.csproj", "{90820C5A-9EF4-4C3D-A66F-9F6DC19C100E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +30,13 @@ Global
 		{06E53539-7790-4387-8FF2-6D2CA74BE495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06E53539-7790-4387-8FF2-6D2CA74BE495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06E53539-7790-4387-8FF2-6D2CA74BE495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90820C5A-9EF4-4C3D-A66F-9F6DC19C100E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90820C5A-9EF4-4C3D-A66F-9F6DC19C100E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90820C5A-9EF4-4C3D-A66F-9F6DC19C100E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90820C5A-9EF4-4C3D-A66F-9F6DC19C100E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5AAA1DD3-5A69-4AB2-B792-2BDBC021C1AA} = {296D4A84-F585-4889-8F53-41402208FFF3}
+		{90820C5A-9EF4-4C3D-A66F-9F6DC19C100E} = {1005BB73-8219-41CE-B693-F63527B4AEEF}
 	EndGlobalSection
 EndGlobal
